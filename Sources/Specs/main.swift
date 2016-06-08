@@ -1,3 +1,3 @@
 import XTest
 
-Suite(groups: MainSpec()).run()
+Suite(groups: BoardSpec()).run()
