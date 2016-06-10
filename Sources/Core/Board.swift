@@ -81,6 +81,10 @@ public class Board {
         return columns
     }
     
+    public func isTie() -> Bool{
+        return !isWin() && moves.count == size*size
+        
+    }
     func getAvaliablePositions() -> [Int] {
         var avaliablePositions = [Int]()
         for position in 0..<size {
