@@ -21,7 +21,7 @@ public class Board {
         moves.append(position)
         move += 1
     }
-    public func getPosition(position: Int) -> String{
+    public func getMarkerAtPosition(position: Int) -> String{
         return markers[position]
     }
     public func isWin() -> Bool {
