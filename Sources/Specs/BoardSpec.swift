@@ -43,4 +43,10 @@ class BoardSpec: Group {
         let board = Board();
         assert.that(board.isWin(), equals: false, message: "board should should reconise when no win occurs")
     }
+    let boardCanGetAvaliablePositions = Test { assert in
+        let board = Board();
+        board.move(position: 2, marker: "X")
+        board.move(position: 4, marker: "X")
+        board.move(position: 6, marker: "X")
+        //todo assert.that(board.getAvaliablePositions()
 }

@@ -83,4 +83,14 @@ public class Board {
         }
         return columns
     }
+    
+    func getAvaliablePositions() -> [Int] {
+        var avaliablePositions = [Int]()
+        for position in 0..<size {
+            if (markers[position] == String(position)) {
+                avaliablePositions.append(position)
+            }
+        }
+        return avaliablePositions
+    }
 }
