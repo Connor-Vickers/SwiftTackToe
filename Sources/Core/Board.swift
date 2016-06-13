@@ -11,6 +11,7 @@ public class Board {
         }
         moves = [Int]()
     }
+    
     public func getSize()-> Int{
         return size
     }
@@ -21,33 +22,17 @@ public class Board {
     public func getMarkerAtPosition(position: Int) -> String{
         return markers[position]
     }
-    public func isWin() -> Bool {
-        var winPossibilities = [[String]]()
-
-        let diagonals = getDiagonals()
-        winPossibilities.append(diagonals.forwardDiagonal)
-        winPossibilities.append(diagonals.backwardDiagonal)
-        
-        winPossibilities += getRows()
-        winPossibilities += getColumns()
-        
-        //search all winPossibilities for win
-        for possibility in winPossibilities {
-            var win = true
-            let marker = possibility[0]
-            for position in possibility {
-                if position != marker {
-                    win = false
-                }
-            }
-            if win {
-                return true
+    public func getAvaliablePositions() -> [Int] {
+        var avaliablePositions = [Int]()
+        for position in 0..<size {
+            if (markers[position] == String(position)) {
+                avaliablePositions.append(position)
             }
         }
-        return false
+        return avaliablePositions
     }
     
-    func getDiagonals() -> (forwardDiagonal: [String], backwardDiagonal: [String]){
+    public func getDiagonals() -> (forwardDiagonal: [String], backwardDiagonal: [String]){
         var forwardDiagonal = [String]()
         var backwardDiagonal = [String]()
         for i in 0..<size {
@@ -57,7 +42,7 @@ public class Board {
         return (forwardDiagonal, backwardDiagonal)
     }
     
-    func getRows() -> [[String]] {
+    public func getRows() -> [[String]] {
         var rows = [[String]]()
         for rowNumber in 0..<size {
             var row = [String]()
@@ -69,7 +54,7 @@ public class Board {
         return rows
     }
     
-    func getColumns() -> [[String]] {
+    public func getColumns() -> [[String]] {
         var columns = [[String]]()
         for columnNumber in 0..<size {
             var column = [String]()
@@ -80,18 +65,5 @@ public class Board {
         }
         return columns
     }
-    
-    public func isTie() -> Bool{
-        return !isWin() && moves.count == size*size
-        
-    }
-    func getAvaliablePositions() -> [Int] {
-        var avaliablePositions = [Int]()
-        for position in 0..<size {
-            if (markers[position] == String(position)) {
-                avaliablePositions.append(position)
-            }
-        }
-        return avaliablePositions
-    }
 }
+    
