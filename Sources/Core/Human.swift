@@ -1,7 +1,12 @@
-/*public class Human: Player{
-    init(marker: String){
-        this.marker = marker
+public class Human: Player{
+    let marker: String
+    public init(marker: String){
+        self.marker = marker
     }
-    func getMove(avaliableMoves: [Int]) -> Int
-    func getMarker() -> String
-}*/
+    public func getMove(avaliableMoves: [Int]) -> Int{
+        return avaliableMoves[0]
+    }
+    func getMarker() -> String{
+        return marker
+    }
+}
