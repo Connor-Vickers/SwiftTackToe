@@ -24,8 +24,8 @@ public class Board {
     }
     public func getAvaliablePositions() -> [Int] {
         var avaliablePositions = [Int]()
-        for position in 0..<size {
-            if (markers[position] == String(position)) {
+        for position in 0..<size*size {
+            if (markers[position] == String(position+1)) {
                 avaliablePositions.append(position)
             }
         }

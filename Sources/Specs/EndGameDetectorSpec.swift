@@ -35,6 +35,10 @@ class EndGameDetectorSpec: Group {
         let board = Board();
         assert.that(!EndGameDetector.isWin(board: board))
     }
+    let noTieTest = Test { assert in
+        let board = Board();
+        assert.that(!EndGameDetector.isTie(board: board))
+    }
     let boardCanDetectTie = Test { assert in
         let board = Board();
         board.move(position: 0, marker: "X")
