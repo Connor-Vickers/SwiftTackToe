@@ -6,8 +6,8 @@ struct GameSpec: Group {
     static var game: Game = Game(board: board)
     
     func before() {
-        //board = Board();
-        //game = Game(board: board)
+        GameSpec.board = Board();
+        GameSpec.game = Game(board: GameSpec.board)
     }
 
     let rowWinTest = Test { assert in
@@ -51,6 +51,6 @@ struct GameSpec: Group {
         board.move(position: 6, marker: "O")
         board.move(position: 7, marker: "X")
         board.move(position: 8, marker: "O")
-        assert.that(!game.isTie())
+        assert.that(game.isTie())
     }
 }
