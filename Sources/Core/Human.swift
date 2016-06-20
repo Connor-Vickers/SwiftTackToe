@@ -1,12 +1,21 @@
-public class Human: Player{
-    let marker: String
-    public init(marker: String){
+public class Human: Player {
+    public let marker: String
+    let io: IO
+    
+    public init(marker: String, io: IO){
         self.marker = marker
+        self.io = io
     }
+    
     public func getMove(avaliableMoves: [Int]) -> Int{
-        return avaliableMoves[0]
+        let message = "Select a Move:"
+        while true {
+            io.output(message: message)
+            if let input = io.input(), x = Int(input){
+                return x
+            }
+            io.output(message: "Invalid Input Please Try Again")
+        }
     }
-    func getMarker() -> String{
-        return marker
-    }
+    
 }
