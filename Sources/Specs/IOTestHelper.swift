@@ -1,11 +1,11 @@
 import XTest
 import Core
 
-public class testIO:IO {
+public class TestIO:IO {
     var inputs: [String]
     public var outputs = [String]()
 
-    init(inputs: [String]){
+    init(inputs: [String] = []){
         self.inputs = inputs
     }
     
@@ -16,6 +16,13 @@ public class testIO:IO {
     public func input() -> String? {
         defer { inputs.removeFirst() }
         return inputs.first
+    }
+    public func getOutputAsASingleString() -> String{
+        var singleString = ""
+        for element in outputs{
+            singleString.append(element)
+        }
+        return singleString
     }
 }
 

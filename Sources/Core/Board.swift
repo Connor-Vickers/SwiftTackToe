@@ -6,7 +6,7 @@ public class Board {
     public init(size: Int = 3){
         self.size = size
         markers = [String]()
-        for position in 1...(size*size) {
+        for position in 0..<(size*size) {
             markers.append(String(position))
         }
         moves = [Int]()
@@ -24,8 +24,8 @@ public class Board {
     }
     public func getAvaliablePositions() -> [Int] {
         var avaliablePositions = [Int]()
-        for position in 0..<size {
-            if (markers[position] == String(position + 1)) {
+        for position in 0..<size*size {
+            if (markers[position] == String(position)) {
                 avaliablePositions.append(position)
             }
         }

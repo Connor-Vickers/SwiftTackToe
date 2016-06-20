@@ -3,11 +3,12 @@ public protocol IO {
     func input() -> String?
 }
 
-class CommandLine:IO {
-    func output(message: String){
-        print(message)
+public class CommandLine:IO {
+    public init(){}
+    public func output(message: String){
+        print(message, terminator: "")
     }
-    func input() -> String? {
+    public func input() -> String? {
         return readLine(strippingNewline: true)
     }
 }
