@@ -1,5 +1,4 @@
 import XTest
 
-Suite(groups: BoardSpec()).run()
-Suite(groups: EndGameDetectorSpec()).run()
-Suite(groups: HumanSpec()).run()
+Suite(groups: BoardSpec(), GameSpec(), HumanSpec()).run()
+

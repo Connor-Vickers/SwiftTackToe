@@ -1,42 +1,47 @@
 import XTest
 import Core
 
-class EndGameDetectorSpec: Group {
+struct GameSpec: Group {
+    static var board: Board = Board();
+    static var game: Game = Game(board: board)
+    
+    func before() {
+        //board = Board();
+        //game = Game(board: board)
+    }
 
     let rowWinTest = Test { assert in
-        let board = Board();
+        
         board.move(position: 3, marker: "X")
         board.move(position: 4, marker: "X")
         board.move(position: 5, marker: "X")
-        assert.that(EndGameDetector.isWin(board: board))
+        assert.that(game.isWin())
     }
     let colWinTest = Test { assert in
-        let board = Board();
         board.move(position: 2, marker: "X")
         board.move(position: 5, marker: "X")
         board.move(position: 8, marker: "X")
-        assert.that(EndGameDetector.isWin(board: board))
+        assert.that(game.isWin())
     }
     let backwardDiagonalsWinTest = Test { assert in
-        let board = Board();
         board.move(position: 0, marker: "X")
         board.move(position: 4, marker: "X")
         board.move(position: 8, marker: "X")
-        assert.that(EndGameDetector.isWin(board: board))
+        assert.that(game.isWin())
     }
     let forwardDiagonalsWinTest = Test { assert in
-        let board = Board();
         board.move(position: 2, marker: "X")
         board.move(position: 4, marker: "X")
         board.move(position: 6, marker: "X")
-        assert.that(EndGameDetector.isWin(board: board))
+        assert.that(game.isWin())
     }
     let noWinTest = Test { assert in
-        let board = Board();
-        assert.that(!EndGameDetector.isWin(board: board))
+        assert.that(!game.isWin())
+    }
+    let noTieTest = Test { assert in
+        assert.that(!game.isTie())
     }
     let boardCanDetectTie = Test { assert in
-        let board = Board();
         board.move(position: 0, marker: "X")
         board.move(position: 1, marker: "O")
         board.move(position: 2, marker: "X")
@@ -46,6 +51,6 @@ class EndGameDetectorSpec: Group {
         board.move(position: 6, marker: "O")
         board.move(position: 7, marker: "X")
         board.move(position: 8, marker: "O")
-        assert.that(EndGameDetector.isTie(board: board))
+        assert.that(!game.isTie())
     }
 }

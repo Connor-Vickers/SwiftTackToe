@@ -1,6 +1,11 @@
-public class EndGameDetector {
+public class Game {
+    let board: Board
     
-    public static func isWin(board: Board) -> Bool {
+    public init(board: Board){
+        self.board = board
+    }
+    
+    public func isWin() -> Bool {
         var winPossibilities = [[String]]()
         
         let diagonals = board.getDiagonals()
@@ -28,8 +33,8 @@ public class EndGameDetector {
     
     
     
-    public static func isTie(board: Board) -> Bool{
-        return !isWin(board: board) && board.getAvaliablePositions().count == 0
+    public func isTie() -> Bool{
+        return !isWin() && board.getAvaliablePositions().count == 0
         
     }
     
