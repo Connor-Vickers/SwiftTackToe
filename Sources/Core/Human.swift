@@ -12,7 +12,9 @@ public class Human: Player {
         while true {
             io.output(message: message)
             if let input = io.input(), x = Int(input){
-                return x
+                if avaliableMoves.contains(x){
+                    return x
+                }
             }
             io.output(message: "Invalid Input Please Try Again")
         }

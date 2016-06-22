@@ -1,5 +1,6 @@
 public class UI{
     public static func displayBoard(board: Board, io: IO){
+        io.output(message: "\n")
         let rows = board.getRows()
         for row in rows.dropLast(){
             printRow(row: row, io:io)

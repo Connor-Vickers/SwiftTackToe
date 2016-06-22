@@ -1,4 +1,4 @@
-protocol Player {
+public protocol Player {
     func getMove(avaliableMoves: [Int]) -> Int
     var marker: String { get }
 }
