@@ -1,2 +1,2 @@
 import XTest
-Suite(groups: BoardSpec(), GameSpec(), HumanSpec(), UISpec()).run()
+Suite(groups: BoardSpec(), GameSpec(), HumanSpec(), UISpec(), GameManagerSpec()).run()
