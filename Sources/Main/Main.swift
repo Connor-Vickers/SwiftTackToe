@@ -6,6 +6,9 @@ let player2 :Player = Human(marker: "O", io: io)
 let board = Board()
 let game = Game(board: board)
 var currentPlayer = player1
+let gameManager = GameManager(player1: player1, player2: player2, game: Game, io: io)
+
+gameManager.start()
 
 func swapPlayers(){
 	if(currentPlayer.marker == player1.marker){
@@ -15,7 +18,12 @@ func swapPlayers(){
 	}
 }
 
-while(!game.isWin() && !game.isTie()){
+func gameIsOngoing() -> Bool {
+	let gameOver = game.isWin() || game.isTie()
+	return !gameOver
+}
+
+while gameIsOngoing() {
 	UI.displayBoard(board: board, io: io)
 	io.output(message: "Player \(currentPlayer.marker)'s turn\n")
 	board.move(position: currentPlayer.getMove(avaliableMoves: board.getAvaliablePositions()), marker: currentPlayer.marker)
