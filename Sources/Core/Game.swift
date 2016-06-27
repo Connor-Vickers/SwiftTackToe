@@ -1,21 +1,19 @@
 public protocol Game {
     init(board: Board)
-    isWin() -> Bool
-    isTie() -> Bool
+    func isWin() -> Bool
+    func isTie() -> Bool
 }
 
-public class StandardTTT {
+public class StandardTTT : Game{
     let board: Board
     
-    public init(board: Board){
+    public required init(board: Board){
         self.board = board
     }
     
     public func isWin() -> Bool {
         let winPossibilities = getAllPossibilitys();
         return winPossibilities.contains(possibilityIsWin)
-    //look at map and reduce
-    //kata monday
     }
     
     func possibilityIsWin(possibility :[String]) -> Bool{
@@ -33,8 +31,8 @@ public class StandardTTT {
         let diagonals = board.getDiagonals()
         possibilities.append(diagonals.forwardDiagonal)
         possibilities.append(diagonals.backwardDiagonal)
-        possibilities.append(board.getRows())
-        possibilities.append(board.getColumns())
+        possibilities+=board.getRows()
+        possibilities+=board.getColumns()
         return possibilities
         
     }

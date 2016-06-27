@@ -1,6 +1,20 @@
 public class GameManager{
-	public init()
-	public func start{
+	let io :IO
+	var game: Game
+	var currentPlayer: Player
+	var board: Board
+	let player1: Player
+	let player2: Player
+
+	public init(player1: Player, player2: Player, io: IO, board: Board, game: Game){
+		self.player1 = player1
+		self.player2 = player2
+		self.io = io
+		self.board = board
+		self.game = game
+		currentPlayer = player1
+	}
+	public func start(){
 		//pick markers
 		//pick player types
 		//pick who goes first

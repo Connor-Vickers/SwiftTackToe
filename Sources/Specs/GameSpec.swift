@@ -3,11 +3,11 @@ import Core
 
 struct GameSpec: Group {
     static var board: Board = Board();
-    static var game: Game = Game(board: board)
+    static var game: Game = StandardTTT(board: board)
     
     func before() {
         GameSpec.board = Board();
-        GameSpec.game = Game(board: GameSpec.board)
+        GameSpec.game = StandardTTT(board: GameSpec.board)
     }
 
     let rowWinTest = Test { assert in
