@@ -1,23 +1,23 @@
 public class Human: Player {
     public let marker: String
-    let io: IO
+    let ui: UI
     
-    public init(marker: String, io: IO){
+    public init(marker: String, ui: UI){
         self.marker = marker
-        self.io = io
+        self.ui = ui
     }
     
     public func getMove(avaliableMoves: [Int]) -> Int{
-        let message = "Select a Move:"
-        while true {
-            io.output(message: message)
-            if let input = io.input(), x = Int(input){
-                if avaliableMoves.contains(x){
-                    return x
-                }
+
+        func isValidMove(input: String) -> Bool{
+            if let x = Int(input){
+                return avaliableMoves.contains(x)
+            }else{
+                return false
             }
-            io.output(message: "Invalid Input Please Try Again")
         }
+
+        ui.promptSelectMove();
+        return Int(ui.getInput(isValidFunction: isValidMove))!
     }
-    
 }
