@@ -1,17 +1,17 @@
 public class GameManager{
-	let io :IO
+	let ui: UI
 	var game: Game
 	var currentPlayer: Player
 	var board: Board
 	let player1: Player
 	let player2: Player
 
-	public init(player1: Player, player2: Player, io: IO, board: Board, game: Game){
+	public init(player1: Player, player2: Player, board: Board, game: Game, ui: UI){
 		self.player1 = player1
 		self.player2 = player2
-		self.io = io
 		self.board = board
 		self.game = game
+		self.ui = ui
 		currentPlayer = player1
 	}
 	public func start(){
@@ -27,20 +27,20 @@ public class GameManager{
 
 	func gameLoop(){
 		while gameIsOngoing() {
-			UI.displayBoard(board: board, io: io)
-			io.output(message: "\(currentPlayer.marker)'s turn\n")
+			ui.displayBoard(board: board)
+			ui.promptTurn(player: currentPlayer)
 			board.move(position: currentPlayer.getMove(avaliableMoves: board.getAvaliablePositions()), marker: currentPlayer.marker)
 			swapPlayers()
 		}
 	}
 
 	func outputResultsOfGame(){
-		UI.displayBoard(board: board, io: io)
+		ui.displayBoard(board: board)
 		if game.isWin(){
 			swapPlayers()
-			io.output(message: "\(currentPlayer.marker) won!\n")
+			ui.promptWon(player: currentPlayer)
 		}else{
-			io.output(message: "Game was a Tie")
+			ui.promptTie()
 		}
 	}
 

@@ -48,34 +48,13 @@ public class UI{
             promptInvalid()
         }
     }
-    //---------------------------------------------------------
-    public static func displayBoard(board: Board, io: IO){
-        io.output(message: "\n")
-        let rows = board.getRows()
-        for row in rows.dropLast(){
-            printRow(row: row, io:io)
-            printUnderscore(times: (row.count * 2)-1, io:io)
-        }
-        if let lastRow = rows.last{
-            printRow(row: lastRow, io:io)
-        }
-        
+    public func promptTurn(player: Player){
+        io.output(message: "\(player.marker)'s turn\n")
     }
-    static func printRow(row: [String], io: IO){
-        for element in row.dropLast(){
-            io.output(message: (element + "|"))
-        }
-        if let lastElement = row.last{
-            io.output(message: lastElement)
-        }
-        io.output(message: "\n")
+    public func promptWon(player: Player){
+        io.output(message: "\(player.marker)Won!\n")
     }
-    static func printUnderscore(times: Int, io: IO){
-        var i = 0
-        while(i < times){
-            io.output(message: "_")
-            i += 1
-        }
-        io.output(message: "\n")
+    public func promptTie(){
+        io.output(message: "Game was a Tie")        
     }
 }
