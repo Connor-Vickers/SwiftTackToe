@@ -1,4 +1,3 @@
-import XTest
 import Core
 
 public class TestIO:IO {
