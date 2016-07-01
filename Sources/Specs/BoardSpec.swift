@@ -23,4 +23,5 @@ class BoardSpec: Group {
         assert.that(board.getAvaliablePositions()[1], equals: 5)
         assert.that(board.getAvaliablePositions()[2], equals: 7)
     }
+
 }
