@@ -1,7 +1,5 @@
-import XTest
 import Speck
-Suite(groups: BoardSpec(), GameSpec(), HumanSpec(), UISpec()).run()
 
-Speck.register([testSpec])
+Speck.register([UISpec, HumanSpec, BoardSpec, GameSpec])
 Speck.Reporter.listen(reporter)
 try Speck.run()

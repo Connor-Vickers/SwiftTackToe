@@ -10,7 +10,7 @@ let testSpec = describe("subtraction") {
     board.move(position: 3, marker: "X")
     board.move(position: 4, marker: "O")
     board.move(position: 8, marker: "X")
-    expect(board.getDiagonals().first).to(equal: ["2", "O", "O"])
-    expect(board.getDiagonals().first).to(equal: ["X", "O", "X"])
+    expect(board.getDiagonals().forwardDiagonal).to(equal: ["2", "O", "O"])
+    expect(board.getDiagonals().backwardDiagonal).to(equal: ["X", "O", "X"])
   }
 }

@@ -1,22 +1,21 @@
-import XTest
+import Speck
 import Core
 
-class HumanSpec: Group {
-    let usesPassedMarker = Test { assert in
-        let io: IO = TestIO(inputs: ["1"])
-        let ui = UI(io: io)
-        let human = Human(marker:"X", ui: ui)
-        assert.that(human.marker, equals: "X")
-    }
-    
-    let getMoveReturnsAnIntTest = Test { assert in
-        let testIO = TestIO(inputs: ["lol","1"])
-        let io: IO = testIO
-        let ui = UI(io: io)
-        let human = Human(marker:"X", ui: ui)
-        assert.that(human.getMove(avaliableMoves: [1]), equals: 1)
-        assert.that(testIO.outputs[0], equals: "Select a Move:")
-        assert.that(testIO.outputs[1], equals: "Invalid Input Please Try Again")
-        assert.that(testIO.outputs.count, equals: 2)
-    }
+let HumanSpec = describe("human") {
+  it("usesPassedMarker") {
+    let io: IO = TestIO(inputs: ["1"])
+    let ui = UI(io: io)
+    let human = Human(marker:"X", ui: ui)
+    expect(human.marker).to(equal: "X")
+  }
+  it("get move selects a move") {
+    let testIO = TestIO(inputs: ["lol","1"])
+    let io: IO = testIO
+    let ui = UI(io: io)
+    let human = Human(marker:"X", ui: ui)
+    expect(human.getMove(avaliableMoves: [1])).to(equal: 1)
+    expect(testIO.outputs[0]).to(equal: "Select a Move:")
+    expect(testIO.outputs[1]).to(equal: "Invalid Input Please Try Again")
+    expect(testIO.outputs.count).to(equal: 2)
+  }
 }
