@@ -2,13 +2,13 @@ import Speck
 import Core
 
 let GameSpec = describe("game") {
-    var board: Board = Board();
-    var game: Game = StandardTTT(board: board)
+  var board: Board = Board()
+  var game: Game = StandardTTT(board: board)
 
-    func before() {
-        board = Board();
-        game = StandardTTT(board: board)
-    }
+  func before() {
+      board = Board()
+      game = StandardTTT(board: board)
+  }
 
   it("recongnizes a row win") {
     board.move(position: 3, marker: "X")

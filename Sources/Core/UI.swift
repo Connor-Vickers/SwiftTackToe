@@ -52,7 +52,7 @@ public class UI{
         io.output(message: "\(player.marker)'s turn\n")
     }
     public func promptWon(player: Player){
-        io.output(message: "\(player.marker)Won!\n")
+        io.output(message: "\(player.marker) Won!\n")
     }
     public func promptTie(){
         io.output(message: "Game was a Tie")        
