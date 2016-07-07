@@ -1,28 +1,25 @@
 public class GameManager{
+
+	// Process.arguments => [String]
+
 	let ui: UI
-	var game: Game
 	var currentPlayer: Player
 	var board: Board
 	let player1: Player
 	let player2: Player
+	let endGameCriteria: EndGameCriteria
 
-	public init(player1: Player, player2: Player, board: Board, game: Game, ui: UI){
+	public init(player1: Player, player2: Player, board: Board, endGameCriteria: EndGameCriteria, ui: UI){
 		self.player1 = player1
 		self.player2 = player2
 		self.board = board
-		self.game = game
 		self.ui = ui
+		self.endGameCriteria = endGameCriteria
 		currentPlayer = player1
 	}
 	public func start(){
-		//pick markers
-		//pick player types
-		//pick who goes first
-
 		gameLoop()
 		outputResultsOfGame()
-
-		//want to play again?
 	}
 
 	func gameLoop(){
@@ -36,7 +33,7 @@ public class GameManager{
 
 	func outputResultsOfGame(){
 		ui.displayBoard(board: board)
-		if game.isWin(){
+		if endGameCriteria.isWin(board: board){
 			swapPlayers()
 			ui.promptWon(player: currentPlayer)
 		}else{
@@ -53,7 +50,7 @@ public class GameManager{
 	}
 
 	func gameIsOngoing() -> Bool {
-		let gameOver = game.isWin() || game.isTie()
+		let gameOver = endGameCriteria.isWin(board: board) || endGameCriteria.isTie(board: board)
 		return !gameOver
 	}
 }

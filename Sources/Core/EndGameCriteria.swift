@@ -1,18 +1,14 @@
-public protocol Game {
-    init(board: Board)
-    func isWin() -> Bool
-    func isTie() -> Bool
+public protocol EndGameCriteria {
+    func isWin(board: Board) -> Bool
+    func isTie(board: Board) -> Bool
 }
 
-public class StandardTTT : Game{
-    let board: Board
+public class StandardTTT : EndGameCriteria{
+
+    public init() {}
     
-    public required init(board: Board){
-        self.board = board
-    }
-    
-    public func isWin() -> Bool {
-        let winPossibilities = getAllPossibilitys();
+    public func isWin(board: Board) -> Bool {
+        let winPossibilities = getAllPossibilitys(board: board);
         return winPossibilities.contains(possibilityIsWin)
     }
     
@@ -26,7 +22,7 @@ public class StandardTTT : Game{
         return true
     }
     
-    func getAllPossibilitys() -> [[String]]{
+    func getAllPossibilitys(board: Board) -> [[String]]{
         var possibilities = [[String]]()
         let diagonals = board.getDiagonals()
         possibilities.append(diagonals.forwardDiagonal)
@@ -37,8 +33,8 @@ public class StandardTTT : Game{
         
     }
 
-    public func isTie() -> Bool{
-        return !isWin() && board.getAvaliablePositions().count == 0
+    public func isTie(board: Board) -> Bool{
+        return !isWin(board: board) && board.getAvaliablePositions().count == 0
         
     }
     

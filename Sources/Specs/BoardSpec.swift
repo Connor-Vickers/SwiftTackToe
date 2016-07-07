@@ -7,12 +7,12 @@ let BoardSpec = describe("board") {
     expect(board.getSize()).to(equal: 3)
   }
   it("can set and get positions") {
-    let board = Board();
+    var board = Board();
     board.move(position: 3, marker: "X")
     expect(board.getMarkerAtPosition(position:3)).to(equal: "X")
   }
   it("can get avaliable positions") {
-    let board = Board();
+    var board = Board();
     board.move(position: 0, marker: "X")
     board.move(position: 1, marker: "X")
     board.move(position: 6, marker: "X")

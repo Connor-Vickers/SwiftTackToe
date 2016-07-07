@@ -1,4 +1,4 @@
-public class Board {
+public struct Board {
     let size: Int
     var markers: [String]
     var moves: [Int]
@@ -15,7 +15,7 @@ public class Board {
     public func getSize()-> Int{
         return size
     }
-    public func move(position: Int, marker: String){
+    public mutating func move(position: Int, marker: String){
         markers[position] = marker
         moves.append(position)
     }
