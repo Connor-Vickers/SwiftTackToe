@@ -24,34 +24,34 @@ let CLIParserSpec = describe("cli parser") {
     }
 
     it("recongnizes a playermarker parameter") {
-   		var resultOptions = parse(arguments: ["--firstPlayerMarker", "U", "--secondPlayerMarker", "L"])
-   		var correctFirstPlayer = false
-		if case let Core.Options.PlayerOption.Human(marker) = resultOptions.firstPlayer{
-			correctFirstPlayer = marker == "U"
-		}
-		expect(correctFirstPlayer).to(equal: true)
+      var resultOptions = parse(arguments: ["--firstPlayerMarker", "U", "--secondPlayerMarker", "L"])
+      var correctFirstPlayer = false
+      if case let Core.Options.PlayerOption.Human(marker) = resultOptions.firstPlayer{
+        correctFirstPlayer = marker == "U"
+      }
+      expect(correctFirstPlayer).to(equal: true)
 
-		var correctSecondPlayer = false
-		if case let Core.Options.PlayerOption.Human(marker) = resultOptions.secondPlayer{
-			correctSecondPlayer = marker == "L"
-		}
-		expect(correctSecondPlayer).to(equal: true)
-    }
+      var correctSecondPlayer = false
+      if case let Core.Options.PlayerOption.Human(marker) = resultOptions.secondPlayer{
+        correctSecondPlayer = marker == "L"
+      }
+      expect(correctSecondPlayer).to(equal: true)
+      }
 
     it("recongnizes a playerType parameter") {
    		var resultOptions = parse(arguments: ["--firstPlayerType", "Computer", "--secondPlayerType", "Computer"])
    		var correctFirstPlayer = false
-		if case let Core.Options.PlayerOption.Computer(marker) = resultOptions.firstPlayer{
-			correctFirstPlayer = true
-		}
-		expect(correctFirstPlayer).to(equal: true)
+		  if case let Core.Options.PlayerOption.Computer(marker) = resultOptions.firstPlayer{
+			 correctFirstPlayer = true
+		  }
+		  expect(correctFirstPlayer).to(equal: true)
 
-		var correctSecondPlayer = false
-		if case let Core.Options.PlayerOption.Computer(marker) = resultOptions.secondPlayer{
-			correctSecondPlayer = true
-		}
-		expect(correctSecondPlayer).to(equal: true)
-    }
+		  var correctSecondPlayer = false
+		  if case let Core.Options.PlayerOption.Computer(marker) = resultOptions.secondPlayer{
+			 correctSecondPlayer = true
+		  }
+		  expect(correctSecondPlayer).to(equal: true)
+      }
     it("asserts when playermarker is a number") {
     	func assertFunc(passed: Bool, message: String){
     		if !passed{
