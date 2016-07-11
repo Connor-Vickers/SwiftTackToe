@@ -9,14 +9,28 @@ public class GameManager{
 	let player2: Player
 	let endGameCriteria: EndGameCriteria
 
-	public init(player1: Player, player2: Player, board: Board, endGameCriteria: EndGameCriteria, ui: UI){
-		self.player1 = player1
-		self.player2 = player2
-		self.board = board
+	public init(options: Options, endGameCriteria: EndGameCriteria, ui: UI){
+		self.player1 = GameManager.instantiatePlayer(playerOption: options.firstPlayer, ui: ui)
+		self.player2 = GameManager.instantiatePlayer(playerOption: options.secondPlayer, ui: ui)
+		self.board = Board(size: options.size)
 		self.ui = ui
 		self.endGameCriteria = endGameCriteria
 		currentPlayer = player1
 	}
+
+	private static func instantiatePlayer(playerOption: Options.PlayerOption, ui: UI) -> Player{
+		switch(playerOption){
+			case let Options.PlayerOption.Human(marker):
+				return Human(marker: marker, ui: ui)
+			//case let Options.PlayerOption.Computer(marker):
+			//	return Computer(marker: marker)
+			default:
+				assert(false, "recieved invalid player option \(playerOption)")
+		}
+
+
+	}
+
 	public func start(){
 		gameLoop()
 		outputResultsOfGame()

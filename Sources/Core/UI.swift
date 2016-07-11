@@ -1,6 +1,6 @@
 public class UI{
     let io: IO
-    public init(io: IO){
+    public init(io: IO = CommandLine()){
         self.io = io
     }
     public func displayBoard(board: Board){
