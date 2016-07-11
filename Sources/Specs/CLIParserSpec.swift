@@ -52,5 +52,31 @@ let CLIParserSpec = describe("cli parser") {
 		}
 		expect(correctSecondPlayer).to(equal: true)
     }
+    it("asserts when playermarker is a number") {
+    	func assertFunc(passed: Bool, message: String){
+    		if !passed{
+    			expect(message).to(equal: "Invalid Marker: 1")
+    		}
+    	} 
+    	parse(arguments: ["--firstPlayerMarker", "1"], assertFunc: assertFunc)
+   	}
+
+   	it("asserts when playermarker is a more than one caracter") {
+    	func assertFunc(passed: Bool, message: String){
+    		if !passed{
+    			expect(message).to(equal: "Invalid Marker: hi")
+    		}
+    	} 
+    	parse(arguments: ["--firstPlayerMarker", "hi"], assertFunc: assertFunc)
+   	}
+
+   	it("asserts when playermarker is the same for both players") {
+    	func assertFunc(passed: Bool, message: String){
+    		if !passed{
+    			expect(message).to(equal: "Both Players can not have the same marker")
+    		}
+    	} 
+    	parse(arguments: ["--firstPlayerMarker", "A", "--secondPlayerMarker", "A"], assertFunc: assertFunc)
+   	}  
 }
 
