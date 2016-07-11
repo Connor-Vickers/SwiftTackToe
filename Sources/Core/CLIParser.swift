@@ -19,7 +19,9 @@ public func parse(arguments: [String]) -> Options {
 
 	let firstPlayerMarker = findArgument(arguments: arguments, key:"firstPlayerMarker", defaultValue: "X")
 	let secondPlayerMarker = findArgument(arguments: arguments, key:"secondPlayerMarker", defaultValue: "O")
-	assert(firstPlayerMarker.characters.count == 1 && secondPlayerMarker.characters.count == 1 && firstPlayerMarker != secondPlayerMarker, "Invalid Marker")
+	checkIfValidMarker(marker: firstPlayerMarker)
+	checkIfValidMarker(marker: secondPlayerMarker)
+	assert(firstPlayerMarker != secondPlayerMarker, "Both Players can not have the same marker")
 	
 	let firstPlayerType = findArgument(arguments: arguments, key:"firstPlayerType", defaultValue: "Human")
 	let secondPlayerType = findArgument(arguments: arguments, key:"secondPlayerType", defaultValue: "Human")
@@ -28,6 +30,11 @@ public func parse(arguments: [String]) -> Options {
 	let secondPlayer = toPlayerOption(playerType: secondPlayerType, playerMarker: secondPlayerMarker)
 
 	return Options(firstPlayer: firstPlayer, secondPlayer: secondPlayer, size: size)
+}
+
+private func checkIfValidMarker(marker: String){
+	assert(marker.characters.count == 1, "Invalid Marker: \(marker)")
+	assert(!(marker >= "0" && marker <= "9"), "Invalid Marker: \(marker)")
 }
 
 private func toPlayerOption(playerType: String, playerMarker: String) -> Options.PlayerOption{
