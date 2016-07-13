@@ -1,4 +1,5 @@
 import TTT
+import CLI
 
 let io :IO = CommandLine()
 let ui = UI(io: io)

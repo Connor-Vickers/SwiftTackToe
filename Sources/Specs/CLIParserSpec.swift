@@ -1,5 +1,6 @@
  import Speck
  import TTT
+ import CLI
 
 let CLIParserSpec = describe("cli parser") {
   it("returns the default configuration when no args are received") {
