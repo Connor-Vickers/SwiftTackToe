@@ -1,5 +1,5 @@
 import Speck
-import Core
+import TTT
 
  let GameManagerSpec = describe("game manager"){
 //   var io :IO = CommandLine()

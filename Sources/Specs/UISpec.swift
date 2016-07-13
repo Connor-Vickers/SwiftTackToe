@@ -1,5 +1,5 @@
 import Speck
-import Core
+import TTT
 
 let UISpec = describe("UI") {
   it("displays a blank board") {

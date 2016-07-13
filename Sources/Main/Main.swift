@@ -1,4 +1,4 @@
-import Core
+import TTT
 
 let io :IO = CommandLine()
 let ui = UI(io: io)

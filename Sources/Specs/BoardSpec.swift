@@ -1,5 +1,5 @@
 import Speck
-import Core
+import TTT
 
 let BoardSpec = describe("board") {
   it("default size of 3") {

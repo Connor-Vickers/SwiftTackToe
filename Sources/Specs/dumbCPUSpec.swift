@@ -1,4 +1,4 @@
-import Core
+import TTT
 import Speck
 
 let dumbCPUSpec = describe("dumb computer") {

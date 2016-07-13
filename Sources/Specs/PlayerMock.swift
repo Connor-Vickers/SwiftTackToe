@@ -1,4 +1,4 @@
-import Core
+import TTT
 
 public class PlayerMock: Player{
 	public let marker: String
