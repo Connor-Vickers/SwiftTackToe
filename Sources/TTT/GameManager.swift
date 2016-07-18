@@ -40,7 +40,7 @@ public class GameManager{
 		while gameIsOngoing() {
 			ui.displayBoard(board: board)
 			ui.promptTurn(player: currentPlayer)
-			board.move(position: currentPlayer.getMove(avaliableMoves: board.getAvaliablePositions()), marker: currentPlayer.marker)
+			board.move(position: currentPlayer.getMove(board: board), marker: currentPlayer.marker)
 			swapPlayers()
 		}
 	}
