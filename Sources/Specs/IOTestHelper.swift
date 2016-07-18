@@ -1,4 +1,4 @@
-import Core
+import TTT
 
 public class TestIO:IO {
     var inputs: [String]

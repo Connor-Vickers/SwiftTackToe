@@ -1,5 +1,5 @@
 import Speck
-import Core
+import TTT
 
 let HumanSpec = describe("human") {
   it("usesPassedMarker") {

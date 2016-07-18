@@ -1,5 +1,5 @@
 import Speck
-import Core
+import TTT
 
 let EndGameCriteriaSpec = describe("endGameCriteria") {
   var board: Board = Board()
