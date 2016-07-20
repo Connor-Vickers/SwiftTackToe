@@ -8,16 +8,13 @@ public class Human: Player {
     }
     
     public func getMove(board: Board) -> Int{
-
-        func isValidMove(input: String) -> Bool{
-            if let x = Int(input){
+        ui.promptSelectMove();
+        return Int(ui.getInput(){
+            if let x = Int($0){
                 return board.getAvaliablePositions().contains(x)
             }else{
                 return false
             }
-        }
-
-        ui.promptSelectMove();
-        return Int(ui.getInput(isValidFunction: isValidMove))!
+        })!
     }
 }

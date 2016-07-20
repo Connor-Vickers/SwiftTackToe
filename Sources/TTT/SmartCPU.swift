@@ -1,12 +1,12 @@
 public class SmartCPU: Player{
 	public let marker: String
 	let endGameCriteria: EndGameCriteria
-	let opponateMarker: String
+	let opponentMarker: String
 
-	public init(marker: String, opponateMarker: String){
+	public init(marker: String, opponentMarker: String){
 		self.marker = marker
 		endGameCriteria = StandardTTT()
-		self.opponateMarker = opponateMarker
+		self.opponentMarker = opponentMarker
 	}
 	public func getMove(board: Board) -> Int{
 
@@ -19,7 +19,7 @@ public class SmartCPU: Player{
 				return position
 			}
 			tempBoard = board
-			tempBoard.move(position: position, marker: opponateMarker)
+			tempBoard.move(position: position, marker: opponentMarker)
 			if endGameCriteria.isWin(board: tempBoard){
 				blockingMove = position
 			}
