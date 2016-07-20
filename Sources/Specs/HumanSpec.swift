@@ -13,7 +13,8 @@ let HumanSpec = describe("human") {
     let io: IO = testIO
     let ui = UI(io: io)
     let human = Human(marker:"X", ui: ui)
-    expect(human.getMove(avaliableMoves: [1])).to(equal: 1)
+    let board = Board()
+    expect(human.getMove(board: board)).to(equal: 1)
     expect(testIO.outputs[0]).to(equal: "Select a Move:")
     expect(testIO.outputs[1]).to(equal: "Invalid Input Please Try Again")
     expect(testIO.outputs.count).to(equal: 2)

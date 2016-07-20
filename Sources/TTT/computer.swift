@@ -5,8 +5,7 @@ public class DumbCPU{
 	public init(marker: String){
 		self.marker = marker
 	}
-	public func getMove(avaliableMoves: [Int]) -> Int{
-		let randomIndex = Int(drand48()*Double(avaliableMoves.count))
-		return avaliableMoves[randomIndex]
+	public func getMove(board: Board) -> Int{
+		return board.getAvaliablePositions()[0]		
 	}
 }

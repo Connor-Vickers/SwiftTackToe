@@ -7,11 +7,11 @@ public class Human: Player {
         self.ui = ui
     }
     
-    public func getMove(avaliableMoves: [Int]) -> Int{
+    public func getMove(board: Board) -> Int{
 
         func isValidMove(input: String) -> Bool{
             if let x = Int(input){
-                return avaliableMoves.contains(x)
+                return board.getAvaliablePositions().contains(x)
             }else{
                 return false
             }

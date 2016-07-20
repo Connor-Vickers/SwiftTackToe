@@ -7,7 +7,7 @@ public class PlayerMock: Player{
         self.marker = marker
     }
     
-    public func getMove(avaliableMoves: [Int]) -> Int{
-        return avaliableMoves[0]
+    public func getMove(board: Board) -> Int{
+        return board.getAvaliablePositions()[0]
     }
 }

@@ -54,15 +54,15 @@ let CLIParserSpec = describe("cli parser") {
 	  expect(correctSecondPlayer).to(equal: true)
     }
   it("asserts when playermarker is a number") {
-  	parse(arguments: ["--firstPlayerMarker", "1"]) {expect($0).to(equal: "Invalid Marker: 1")}
+  	let _ = parse(arguments: ["--firstPlayerMarker", "1"]) { expect($0).to(equal: "Invalid Marker: 1") }
  	}
 
  	it("asserts when playermarker is a more than one caracter") {
-  	parse(arguments: ["--firstPlayerMarker", "hi"]) { expect($0).to(equal: "Invalid Marker: hi") }
+  	let _ = parse(arguments: ["--firstPlayerMarker", "hi"]) { expect($0).to(equal: "Invalid Marker: hi") }
  	}
 
  	it("asserts when playermarker is the same for both players") {
-  	parse(arguments: ["--firstPlayerMarker", "A", "--secondPlayerMarker", "A"]) {expect($0).to(equal: "Both Players can not have the same marker")}
+  	let _ = parse(arguments: ["--firstPlayerMarker", "A", "--secondPlayerMarker", "A"]) {expect($0).to(equal: "Both Players can not have the same marker")}
  	}  
 }
 
