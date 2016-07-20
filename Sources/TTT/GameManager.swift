@@ -37,7 +37,7 @@ public class GameManager{
 	}
 
 	func gameLoop(){
-		while gameIsOngoing() {
+		while endGameCriteria.isOnGoing(board: board) {
 			ui.displayBoard(board: board)
 			ui.promptTurn(player: currentPlayer)
 			board.move(position: currentPlayer.getMove(board: board), marker: currentPlayer.marker)
@@ -63,8 +63,5 @@ public class GameManager{
 		}
 	}
 
-	func gameIsOngoing() -> Bool {
-		let gameOver = endGameCriteria.isWin(board: board) || endGameCriteria.isTie(board: board)
-		return !gameOver
-	}
+
 }

@@ -9,21 +9,27 @@ public class SmartCPU: Player{
 		self.opponentMarker = opponentMarker
 	}
 	public func getMove(board: Board) -> Int{
-
-		var blockingMove: Int? = nil
-		
+		var possibleMoves: [[Int]] = []	
 		for position in board.getAvaliablePositions(){
-			var tempBoard = board
-			tempBoard.move(position: position, marker: marker)
-			if endGameCriteria.isWin(board: tempBoard){
-				return position
-			}
-			tempBoard = board
-			tempBoard.move(position: position, marker: opponentMarker)
-			if endGameCriteria.isWin(board: tempBoard){
-				blockingMove = position
-			}
+			let score = evalMove(board: board, move: position, marker: marker)
+			let possibleMove = [position, score]
+			possibleMoves.append(possibleMove)
 		}
-		return blockingMove ?? board.getAvaliablePositions()[0]
+		let bestMove = possibleMoves.reduce([-1,-2]){ previousBestMove, move in
+			return (move[1] > previousBestMove[1]) ? move : previousBestMove
+		}
+		return bestMove[0]
+	}
+
+	func evalMove(board: Board, move: Int, marker: String) -> Int{
+		var newBoard = board
+		newBoard.move(position: move, marker: marker)
+		if endGameCriteria.isWin(board: newBoard){
+			return 1
+		}else if endGameCriteria.isOnGoing(board: newBoard) || endGameCriteria.isTie(board: newBoard){
+			return 0
+		}else{
+			return -1//is loss
+		}
 	}
 }
