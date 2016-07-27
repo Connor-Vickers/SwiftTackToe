@@ -9,12 +9,6 @@ public class Human: Player {
     
     public func getMove(board: Board) -> Int{
         ui.promptSelectMove();
-        return Int(ui.getInput(){
-            if let x = Int($0){
-                return board.getAvaliablePositions().contains(x)
-            }else{
-                return false
-            }
-        })!
+        return ui.getInput(validInputs: board.getAvaliablePositions())
     }
 }

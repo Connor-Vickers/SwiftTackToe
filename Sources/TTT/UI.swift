@@ -38,11 +38,13 @@ public class UI{
     public func promptInvalid(){
         io.output(message: "Invalid Input Please Try Again")
     }
-    public func getInput(isValidFunction: (String) -> Bool) -> String{
+    public func getInput(validInputs: [Int]) -> Int{
         while true {
-            if let input = io.input() {
-                if isValidFunction(input){
-                    return input
+            if let inputString = io.input() {
+                if let inputInt = Int(inputString) {
+                    if validInputs.contains(inputInt) {
+                        return inputInt
+                    }
                 }
             }
             promptInvalid()
