@@ -1,6 +1,7 @@
 public protocol EndGameCriteria {
     func isWin(board: Board) -> Bool
     func isTie(board: Board) -> Bool
+    func isOnGoing(board: Board) -> Bool
 }
 
 public class StandardTTT : EndGameCriteria{
@@ -35,7 +36,10 @@ public class StandardTTT : EndGameCriteria{
 
     public func isTie(board: Board) -> Bool{
         return !isWin(board: board) && board.getAvaliablePositions().count == 0
-        
+    }
+
+    public func isOnGoing(board: Board) -> Bool{
+        return !(board.getAvaliablePositions().count == 0)
     }
     
 }
