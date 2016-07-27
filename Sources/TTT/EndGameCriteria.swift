@@ -1,10 +1,10 @@
-public protocol EndGameCriteria {
+public protocol GameCriteria {
     func isWin(board: Board) -> Bool
     func isTie(board: Board) -> Bool
     func isOnGoing(board: Board) -> Bool
 }
 
-public class StandardTTT : EndGameCriteria{
+public class StandardTTT : GameCriteria{
 
     public init() {}
     

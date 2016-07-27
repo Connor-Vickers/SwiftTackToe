@@ -7,14 +7,14 @@ public class GameManager{
 	var board: Board
 	let player1: Player
 	let player2: Player
-	let endGameCriteria: EndGameCriteria
+	let gameCriteria: GameCriteria
 
-	public init(options: Options, endGameCriteria: EndGameCriteria, ui: UI){
+	public init(options: Options, gameCriteria: GameCriteria, ui: UI){
 		self.player1 = GameManager.instantiatePlayer(playerOption: options.firstPlayer, ui: ui)
 		self.player2 = GameManager.instantiatePlayer(playerOption: options.secondPlayer, ui: ui)
 		self.board = Board(size: options.size)
 		self.ui = ui
-		self.endGameCriteria = endGameCriteria
+		self.gameCriteria = gameCriteria
 		currentPlayer = player1
 	}
 
@@ -37,7 +37,7 @@ public class GameManager{
 	}
 
 	func gameLoop(){
-		while endGameCriteria.isOnGoing(board: board) {
+		while gameCriteria.isOnGoing(board: board) {
 			ui.displayBoard(board: board)
 			ui.promptTurn(player: currentPlayer)
 			board.move(position: currentPlayer.getMove(board: board), marker: currentPlayer.marker)
@@ -47,7 +47,7 @@ public class GameManager{
 
 	func outputResultsOfGame(){
 		ui.displayBoard(board: board)
-		if endGameCriteria.isWin(board: board){
+		if gameCriteria.isWin(board: board){
 			swapPlayers()
 			ui.promptWon(player: currentPlayer)
 		}else{

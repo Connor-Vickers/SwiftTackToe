@@ -1,11 +1,11 @@
 public class SmartCPU: Player{
 	public let marker: String
-	let endGameCriteria: EndGameCriteria
+	let gameCriteria: GameCriteria
 	let opponentMarker: String
 
 	public init(marker: String, opponentMarker: String){
 		self.marker = marker
-		endGameCriteria = StandardTTT()
+		gameCriteria = StandardTTT()
 		self.opponentMarker = opponentMarker
 	}
 	public func getMove(board: Board) -> Int{
@@ -24,9 +24,9 @@ public class SmartCPU: Player{
 	func evalMove(board: Board, move: Int, marker: String) -> Int{
 		var newBoard = board
 		newBoard.move(position: move, marker: marker)
-		if endGameCriteria.isWin(board: newBoard){
+		if gameCriteria.isWin(board: newBoard){
 			return 1
-		}else if endGameCriteria.isOnGoing(board: newBoard) || endGameCriteria.isTie(board: newBoard){
+		}else if gameCriteria.isOnGoing(board: newBoard) || gameCriteria.isTie(board: newBoard){
 			return 0
 		}else{
 			return -1//is loss
