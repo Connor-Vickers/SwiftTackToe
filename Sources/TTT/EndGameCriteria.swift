@@ -35,11 +35,11 @@ public class StandardTTT : EndGameCriteria{
     }
 
     public func isTie(board: Board) -> Bool{
-        return !isWin(board: board) && board.getAvaliablePositions().count == 0
+        return !isWin(board: board) && !isOnGoing(board: board)
     }
 
     public func isOnGoing(board: Board) -> Bool{
-        return !(board.getAvaliablePositions().count == 0)
+        return board.getAvaliablePositions().count != 0
     }
     
 }
